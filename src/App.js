@@ -1,23 +1,44 @@
-import logo from './logo.svg';
+
+import { useState } from 'react';
 import './App.css';
+import { data } from './data';
 
 function App() {
+  const [gifts, setGifts] = useState(data);
+  const removeGift = (id) => {
+    let newGifts =gifts.filter(gift => gift.id !== id);
+    console.log(newGifts)
+    setGifts(newGifts)
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className='container'>
+        <h1>List of {gifts.length}</h1>
+      </div>
+      {gifts.map((thing => {
+        const {id, gift, image, link} = thing;
+        return (
+          <div key={id}>
+            <div className='container'>
+            <h2>{id}. {gift}</h2>
+            </div>
+            <div className='container'>
+            <img src={image} width="450px" alt='gift'/>
+            </div>
+            <div className='container'>
+              <a href={link} target='_blank' rel="noopener noreferrer">Click</a>
+            </div>
+            <div className='container'>
+            <button onClick={() => removeGift(id)}>REMOVE</button>
+            </div>
+          </div>
+        )
+      }))}
+      <div className='container'>
+        <button onClick={() => setGifts([])}>DELETE ALL</button>
+      </div>
+      
     </div>
   );
 }
