@@ -26,9 +26,9 @@ export const data = [
     },
     {
         id: 5,
-        gift: "SPA",
-        image: "https://www.freepik.com/free-photo/spa-treatment-dark-surface_9321289.htm",
-        link: ""
+        gift: "Monitor",
+        image: "https://content2.rozetka.com.ua/goods/images/big/133898250.jpg",
+        link: "https://hard.rozetka.com.ua/samsung_lc32g55tqwixci/p248769925/"
     }
 
 ]
